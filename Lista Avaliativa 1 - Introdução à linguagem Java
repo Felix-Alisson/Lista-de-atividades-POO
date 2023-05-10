@@ -1,0 +1,172 @@
+Questão 1
+
+import java.util.Scanner;
+
+public class SalarioVendedor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Digite o número de carros vendidos: ");
+        int numCarros = sc.nextInt();
+        
+        System.out.print("Digite o valor total das vendas: R$ ");
+        double valorVendas = sc.nextDouble();
+        
+        System.out.print("Digite o salário fixo: R$ ");
+        double salarioFixo = sc.nextDouble();
+        
+        System.out.print("Digite o valor recebido por carro vendido: R$ ");
+        double valorCarro = sc.nextDouble();
+        
+        double comissaoFixa = numCarros * valorCarro;
+        double comissaoVariavel = valorVendas * 0.05;
+        
+        double salarioFinal = salarioFixo + comissaoFixa + comissaoVariavel;
+        
+        System.out.printf("O salário final do vendedor é R$ %.2f", salarioFinal);
+        
+        sc.close();
+    }
+}
+
+Questão 2
+
+import java.util.Scanner;
+
+public class CaloriasRefeicao {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Escolha um prato:");
+        System.out.println("1 - Vegetariano");
+        System.out.println("2 - Peixe");
+        System.out.println("3 - Frango");
+        System.out.println("4 - Carne");
+        int prato = input.nextInt();
+
+        System.out.println("Escolha uma sobremesa:");
+        System.out.println("1 - Abacaxi");
+        System.out.println("2 - Sorvete diet");
+        System.out.println("3 - Mouse diet");
+        System.out.println("4 - Mouse chocolate");
+        int sobremesa = input.nextInt();
+
+        System.out.println("Escolha uma bebida:");
+        System.out.println("1 - Chá");
+        System.out.println("2 - Suco de laranja");
+        System.out.println("3 - Suco de melão");
+        System.out.println("4 - Refrigerante diet");
+        int bebida = input.nextInt();
+
+        int calorias_prato = 0;
+        int calorias_sobremesa = 0;
+        int calorias_bebida = 0;
+
+        if (prato == 1) {
+            calorias_prato = 180;
+        } else if (prato == 2) {
+            calorias_prato = 230;
+        } else if (prato == 3) {
+            calorias_prato = 250;
+        } else if (prato == 4) {
+            calorias_prato = 350;
+        }
+
+        if (sobremesa == 1) {
+            calorias_sobremesa = 75;
+        } else if (sobremesa == 2) {
+            calorias_sobremesa = 110;
+        } else if (sobremesa == 3) {
+            calorias_sobremesa = 170;
+        } else if (sobremesa == 4) {
+            calorias_sobremesa = 200;
+        }
+
+        if (bebida == 1) {
+            calorias_bebida = 0;
+        } else if (bebida == 2) {
+            calorias_bebida = 80;
+        } else if (bebida == 3) {
+            calorias_bebida = 75;
+        } else if (bebida == 4) {
+            calorias_bebida = 20;
+        }
+
+        int calorias_total = calorias_prato + calorias_sobremesa + calorias_bebida;
+        System.out.println("A quantidade total de calorias da refeição é: " + calorias_total);
+    }
+}
+
+Questão 3
+
+import java.util.Scanner;
+
+public class CaracteristicasPopulacao {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int totalHabitantes = 0;
+        int totalMulheres = 0;
+        int mulheresCastanhasCastanhas = 0;
+
+        System.out.println("Informe os dados dos habitantes:");
+
+        while (true) {
+            System.out.println("\nHabitante " + (totalHabitantes + 1));
+
+            System.out.print("Sexo (m ou f): ");
+            String sexo = sc.nextLine();
+
+            System.out.print("Cor dos olhos (a, v, c ou p): ");
+            String corOlhos = sc.nextLine();
+
+            System.out.print("Cor dos cabelos (l, c, p ou r): ");
+            String corCabelos = sc.nextLine();
+
+            System.out.print("Idade (entre 10 e 100 anos): ");
+            int idade = sc.nextInt();
+
+            while (idade < 10 || idade > 100) {
+                System.out.print("Idade inválida. Informe novamente (entre 10 e 100 anos): ");
+                idade = sc.nextInt();
+            }
+
+            System.out.print("Salário (valor positivo): ");
+            double salario = sc.nextDouble();
+
+            while (salario < 0) {
+                System.out.print("Valor inválido. Informe novamente (valor positivo): ");
+                salario = sc.nextDouble();
+            }
+
+            sc.nextLine(); // consumir o '\n' deixado pelo nextDouble()
+
+            if (sexo.equals("f")) {
+                totalMulheres++;
+
+                if (idade >= 18 && idade <= 35 && corOlhos.equals("c") && corCabelos.equals("c")) {
+                    mulheresCastanhasCastanhas++;
+                }
+            }
+
+            System.out.print("\nInforme a idade do próximo habitante (digite -1 para encerrar): ");
+            int proxIdade = sc.nextInt();
+
+            if (proxIdade == -1) {
+                break;
+            }
+
+            sc.nextLine(); // consumir o '\n' deixado pelo nextInt()
+
+            totalHabitantes++;
+        }
+
+        double porcentagemMulheresCastanhasCastanhas = (double) mulheresCastanhasCastanhas / totalMulheres * 100;
+
+        System.out.println("\nTotal de habitantes cadastrados: " + (totalHabitantes + 1));
+        System.out.println("Porcentagem de mulheres com olhos e cabelos castanhos, entre 18 e 35 anos: " +
+                porcentagemMulheresCastanhasCastanhas + "%");
+
+        sc.close();
+    }
+}
